@@ -11,4 +11,4 @@ if ! gh auth status &>/dev/null; then
   gh auth login
 fi
 
-curl -L "https://github.com/$1" | bash -s -- $2 $3 $4 $5 $6 $7 $8 $9
+gh api -H "Accept: application/vnd.github.raw" "/repos/$1/contents/$2?ref=main" | bash -s -- $3 $4 $5 $6 $7 $8 $9
