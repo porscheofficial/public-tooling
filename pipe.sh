@@ -11,4 +11,6 @@ if ! gh auth status &>/dev/null; then
   gh auth login
 fi
 
-gh api -H "Accept: application/vnd.github.raw" "/repos/$1/contents/$2?ref=main" | bash -s -- $3 $4 $5 $6 $7 $8 $9
+REF="${COMMIT:-main}"
+
+gh api -H "Accept: application/vnd.github.raw" "/repos/$1/contents/$2?ref=$REF" | bash -s -- $3 $4 $5 $6 $7 $8 $9
